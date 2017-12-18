@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" 
+    xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:DataServices>
+        <Schema Namespace="microsoft.graph" 
+            xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <!-- You'll have to walk the tree of entities and figure out what you want and don't want. Any structural properties that are not set will show up in the AdditionalProperties bag. -->
+            <!-- Enter your models here -->
+            <EntityType Name="officeGraphInsights" BaseType="microsoft.graph.entity">
+                <NavigationProperty Name="trending" Type="Collection(microsoft.graph.trending)" ContainsTarget="true" />
+                <!-- <NavigationProperty Name="shared" Type="Collection(microsoft.graph.sharedInsight)" ContainsTarget="true" /><NavigationProperty Name="used" Type="Collection(microsoft.graph.usedInsight)" ContainsTarget="true" /> -->
+            </EntityType>
+            <EntityType Name="trending" BaseType="microsoft.graph.entity">
+                <Property Name="weight" Type="Edm.Double" Nullable="false" />
+                <Property Name="resourceVisualization" Type="microsoft.graph.resourceVisualization" />
+                <Property Name="resourceReference" Type="microsoft.graph.resourceReference" />
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" />
+                <!-- <NavigationProperty Name="resource" Type="microsoft.graph.entity" /> -->
+            </EntityType>
+            <ComplexType Name="resourceVisualization">
+                <Property Name="title" Type="Edm.String" Unicode="false" />
+                <Property Name="type" Type="Edm.String" Unicode="false" />
+                <Property Name="mediaType" Type="Edm.String" Unicode="false" />
+                <Property Name="previewImageUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="previewText" Type="Edm.String" Unicode="false" />
+                <Property Name="containerWebUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="containerDisplayName" Type="Edm.String" Unicode="false" />
+                <Property Name="containerType" Type="Edm.String" Unicode="false" />
+            </ComplexType>
+            <ComplexType Name="resourceReference">
+                <Property Name="webUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="id" Type="Edm.String" Unicode="false" />
+                <Property Name="type" Type="Edm.String" Unicode="false" />
+            </ComplexType>
+            <!-- Must have this. Create an entity set for each highlevel object. All object must in an entity set. -->
+            <EntityContainer Name="GraphService">
+                <EntitySet Name="arbitraryName" EntityType="microsoft.graph.officeGraphInsights" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
