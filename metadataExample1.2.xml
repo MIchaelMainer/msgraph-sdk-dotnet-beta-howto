@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" 
+    xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:DataServices>
+        <Schema Namespace="microsoft.graph.beta.models" 
+            xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityType Name="entity" Abstract="true">
+                <Key>
+                    <PropertyRef Name="id" />
+                </Key>
+                <Property Name="id" Type="Edm.String" Nullable="false" Unicode="false" />
+            </EntityType>
+            <EntityType Name="officeGraphInsights" BaseType="microsoft.graph.beta.models.entity">
+                <NavigationProperty Name="trending" Type="Collection(microsoft.graph.beta.models.trending)" ContainsTarget="true" />
+            </EntityType>
+            <EntityType Name="trending" BaseType="microsoft.graph.beta.models.entity">
+                <Property Name="weight" Type="Edm.Double" Nullable="false" />
+                <Property Name="resourceVisualization" Type="microsoft.graph.beta.models.resourceVisualization" />
+                <Property Name="resourceReference" Type="microsoft.graph.beta.models.resourceReference" />
+                <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" />
+            </EntityType>
+            <ComplexType Name="resourceVisualization">
+                <Property Name="title" Type="Edm.String" Unicode="false" />
+                <Property Name="type" Type="Edm.String" Unicode="false" />
+                <Property Name="mediaType" Type="Edm.String" Unicode="false" />
+                <Property Name="previewImageUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="previewText" Type="Edm.String" Unicode="false" />
+                <Property Name="containerWebUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="containerDisplayName" Type="Edm.String" Unicode="false" />
+                <Property Name="containerType" Type="Edm.String" Unicode="false" />
+            </ComplexType>
+            <ComplexType Name="resourceReference">
+                <Property Name="webUrl" Type="Edm.String" Unicode="false" />
+                <Property Name="id" Type="Edm.String" Unicode="false" />
+                <Property Name="type" Type="Edm.String" Unicode="false" />
+            </ComplexType>
+            <EntityContainer Name="GraphService">
+                <EntitySet Name="officeGraphInsights" EntityType="microsoft.graph.beta.models.officeGraphInsights" />
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
