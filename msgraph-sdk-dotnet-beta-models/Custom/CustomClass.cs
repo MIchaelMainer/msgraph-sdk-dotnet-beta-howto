@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 
 // Your beta models must be in this namepspace.
-namespace Microsoft.Graph
+namespace Microsoft.Graph.Beta.Models
 {
     // Use the JsonObjectAttribute for all models you want serialized. Check whether it inherits from other models.
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
