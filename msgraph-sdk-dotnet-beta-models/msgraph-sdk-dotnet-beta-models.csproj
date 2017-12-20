@@ -37,8 +37,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="[9.0.1,11)" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Generated\com\microsoft\graph\beta\models\requests\**" />
-    <EmbeddedResource Remove="Generated\com\microsoft\graph\beta\models\requests\**" />
-    <None Remove="Generated\com\microsoft\graph\beta\models\requests\**" />
+    <PackageReference Include="Microsoft.Graph" Version="1.7.0" />
+    <PackageReference Include="Microsoft.Graph.Core" Version="1.7.0" />
   </ItemGroup>
 </Project>
