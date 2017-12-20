@@ -11,14 +11,14 @@ namespace Microsoft.Graph
     using System;
 
     /// <summary>
-    /// The type GraphServiceOfficeGraphInsightsCollectionPage.
+    /// The type GraphServiceTrendingCollectionPage.
     /// </summary>
-    public partial class GraphServiceOfficeGraphInsightsCollectionPage : CollectionPage<OfficeGraphInsights>, IGraphServiceOfficeGraphInsightsCollectionPage
+    public partial class GraphServiceTrendingCollectionPage : CollectionPage<Trending>, IGraphServiceTrendingCollectionPage
     {
         /// <summary>
-        /// Gets the next page <see cref="IGraphServiceOfficeGraphInsightsCollectionRequest"/> instance.
+        /// Gets the next page <see cref="IGraphServiceTrendingCollectionRequest"/> instance.
         /// </summary>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest NextPageRequest { get; private set; }
+        public IGraphServiceTrendingCollectionRequest NextPageRequest { get; private set; }
 
         /// <summary>
         /// Initializes the NextPageRequest property.
@@ -27,7 +27,7 @@ namespace Microsoft.Graph
         {
             if (!string.IsNullOrEmpty(nextPageLinkString))
             {
-                this.NextPageRequest = new GraphServiceOfficeGraphInsightsCollectionRequest(
+                this.NextPageRequest = new GraphServiceTrendingCollectionRequest(
                     nextPageLinkString,
                     client,
                     null);

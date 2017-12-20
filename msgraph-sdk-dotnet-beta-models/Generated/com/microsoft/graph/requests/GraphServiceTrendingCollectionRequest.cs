@@ -15,17 +15,17 @@ namespace Microsoft.Graph
     using System.Linq.Expressions;
 
     /// <summary>
-    /// The type OfficeGraphInsightsTrendingCollectionRequest.
+    /// The type GraphServiceTrendingCollectionRequest.
     /// </summary>
-    public partial class OfficeGraphInsightsTrendingCollectionRequest : BaseRequest, IOfficeGraphInsightsTrendingCollectionRequest
+    public partial class GraphServiceTrendingCollectionRequest : BaseRequest, IGraphServiceTrendingCollectionRequest
     {
         /// <summary>
-        /// Constructs a new OfficeGraphInsightsTrendingCollectionRequest.
+        /// Constructs a new GraphServiceTrendingCollectionRequest.
         /// </summary>
         /// <param name="requestUrl">The URL for the built request.</param>
         /// <param name="client">The <see cref="IBaseClient"/> for handling requests.</param>
         /// <param name="options">Query and header option name value pairs for the request.</param>
-        public OfficeGraphInsightsTrendingCollectionRequest(
+        public GraphServiceTrendingCollectionRequest(
             string requestUrl,
             IBaseClient client,
             IEnumerable<Option> options)
@@ -60,7 +60,7 @@ namespace Microsoft.Graph
         /// Gets the collection page.
         /// </summary>
         /// <returns>The collection page.</returns>
-        public System.Threading.Tasks.Task<IOfficeGraphInsightsTrendingCollectionPage> GetAsync()
+        public System.Threading.Tasks.Task<IGraphServiceTrendingCollectionPage> GetAsync()
         {
             return this.GetAsync(CancellationToken.None);
         }
@@ -70,10 +70,10 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
         /// <returns>The collection page.</returns>
-        public async System.Threading.Tasks.Task<IOfficeGraphInsightsTrendingCollectionPage> GetAsync(CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<IGraphServiceTrendingCollectionPage> GetAsync(CancellationToken cancellationToken)
         {
             this.Method = "GET";
-            var response = await this.SendAsync<OfficeGraphInsightsTrendingCollectionResponse>(null, cancellationToken).ConfigureAwait(false);
+            var response = await this.SendAsync<GraphServiceTrendingCollectionResponse>(null, cancellationToken).ConfigureAwait(false);
             if (response != null && response.Value != null && response.Value.CurrentPage != null)
             {
                 if (response.AdditionalData != null)
@@ -105,7 +105,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The expand value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Expand(string value)
+        public IGraphServiceTrendingCollectionRequest Expand(string value)
         {
             this.QueryOptions.Add(new QueryOption("$expand", value));
             return this;
@@ -116,7 +116,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="expandExpression">The expression from which to calculate the expand value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Expand(Expression<Func<Trending, object>> expandExpression)
+        public IGraphServiceTrendingCollectionRequest Expand(Expression<Func<Trending, object>> expandExpression)
         {
             if (expandExpression == null)
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The select value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Select(string value)
+        public IGraphServiceTrendingCollectionRequest Select(string value)
         {
             this.QueryOptions.Add(new QueryOption("$select", value));
             return this;
@@ -151,7 +151,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="selectExpression">The expression from which to calculate the select value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Select(Expression<Func<Trending, object>> selectExpression)
+        public IGraphServiceTrendingCollectionRequest Select(Expression<Func<Trending, object>> selectExpression)
         {
             if (selectExpression == null)
             {
@@ -175,7 +175,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The top value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Top(int value)
+        public IGraphServiceTrendingCollectionRequest Top(int value)
         {
             this.QueryOptions.Add(new QueryOption("$top", value.ToString()));
             return this;
@@ -186,7 +186,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The filter value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Filter(string value)
+        public IGraphServiceTrendingCollectionRequest Filter(string value)
         {
             this.QueryOptions.Add(new QueryOption("$filter", value));
             return this;
@@ -197,7 +197,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The skip value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest Skip(int value)
+        public IGraphServiceTrendingCollectionRequest Skip(int value)
         {
             this.QueryOptions.Add(new QueryOption("$skip", value.ToString()));
             return this;
@@ -208,7 +208,7 @@ namespace Microsoft.Graph
         /// </summary>
         /// <param name="value">The orderby value.</param>
         /// <returns>The request object to send.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequest OrderBy(string value)
+        public IGraphServiceTrendingCollectionRequest OrderBy(string value)
         {
             this.QueryOptions.Add(new QueryOption("$orderby", value));
             return this;

@@ -13,15 +13,15 @@ namespace Microsoft.Graph
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The interface IGraphServiceOfficeGraphInsightsCollectionPage.
+    /// The interface IGraphServiceTrendingCollectionPage.
     /// </summary>
-    [JsonConverter(typeof(InterfaceConverter<GraphServiceOfficeGraphInsightsCollectionPage>))]
-    public interface IGraphServiceOfficeGraphInsightsCollectionPage : ICollectionPage<OfficeGraphInsights>
+    [JsonConverter(typeof(InterfaceConverter<GraphServiceTrendingCollectionPage>))]
+    public interface IGraphServiceTrendingCollectionPage : ICollectionPage<Trending>
     {
         /// <summary>
-        /// Gets the next page <see cref="IGraphServiceOfficeGraphInsightsCollectionRequest"/> instance.
+        /// Gets the next page <see cref="IGraphServiceTrendingCollectionRequest"/> instance.
         /// </summary>
-        IGraphServiceOfficeGraphInsightsCollectionRequest NextPageRequest { get; }
+        IGraphServiceTrendingCollectionRequest NextPageRequest { get; }
 
         /// <summary>
         /// Initializes the NextPageRequest property.

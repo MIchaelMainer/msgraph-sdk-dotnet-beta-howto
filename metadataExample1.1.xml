@@ -12,10 +12,6 @@
             </EntityType>
             <!-- We removed the navigation properties since I wasn't interested in those models and sussing out which
                  other schema items I needed to support those. -->
-            <EntityType Name="officeGraphInsights" BaseType="microsoft.graph.entity">
-                <NavigationProperty Name="trending" Type="Collection(microsoft.graph.trending)" ContainsTarget="true" />
-                <!-- <NavigationProperty Name="shared" Type="Collection(microsoft.graph.sharedInsight)" ContainsTarget="true" /><NavigationProperty Name="used" Type="Collection(microsoft.graph.usedInsight)" ContainsTarget="true" /> -->
-            </EntityType>
             <EntityType Name="trending" BaseType="microsoft.graph.entity">
                 <Property Name="weight" Type="Edm.Double" Nullable="false" />
                 <Property Name="resourceVisualization" Type="microsoft.graph.resourceVisualization" />
@@ -42,7 +38,7 @@
                  alter the user entityset and entity if we wanted to generate request builders to
                  access the trending information. -->
             <EntityContainer Name="GraphService">
-                <EntitySet Name="officeGraphInsights" EntityType="microsoft.graph.officeGraphInsights" />
+                <EntitySet Name="trending" EntityType="microsoft.graph.trending" />
             </EntityContainer>
         </Schema>
     </edmx:DataServices>

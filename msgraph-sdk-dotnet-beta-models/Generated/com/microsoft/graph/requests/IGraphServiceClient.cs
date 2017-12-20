@@ -16,9 +16,9 @@ namespace Microsoft.Graph
     {
     
         /// <summary>
-        /// Gets the GraphServiceOfficeGraphInsights request builder.
+        /// Gets the GraphServiceTrending request builder.
         /// </summary>
-        IGraphServiceOfficeGraphInsightsCollectionRequestBuilder OfficeGraphInsights { get; }
+        IGraphServiceTrendingCollectionRequestBuilder Trending { get; }
     
     }
 }

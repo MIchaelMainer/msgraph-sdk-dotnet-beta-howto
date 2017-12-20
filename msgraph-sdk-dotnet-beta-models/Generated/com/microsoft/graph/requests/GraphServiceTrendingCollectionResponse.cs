@@ -12,17 +12,17 @@ namespace Microsoft.Graph
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The type GraphServiceOfficeGraphInsightsCollectionResponse.
+    /// The type GraphServiceTrendingCollectionResponse.
     /// </summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
     [JsonConverter(typeof(DerivedTypeConverter))]
-    public class GraphServiceOfficeGraphInsightsCollectionResponse
+    public class GraphServiceTrendingCollectionResponse
     {
         /// <summary>
-        /// Gets or sets the <see cref="IGraphServiceOfficeGraphInsightsCollectionPage"/> value.
+        /// Gets or sets the <see cref="IGraphServiceTrendingCollectionPage"/> value.
         /// </summary>
 		[JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName ="value", Required = Newtonsoft.Json.Required.Default)]
-        public IGraphServiceOfficeGraphInsightsCollectionPage Value { get; set; }
+        public IGraphServiceTrendingCollectionPage Value { get; set; }
 
         /// <summary>
         /// Gets or sets additional data.

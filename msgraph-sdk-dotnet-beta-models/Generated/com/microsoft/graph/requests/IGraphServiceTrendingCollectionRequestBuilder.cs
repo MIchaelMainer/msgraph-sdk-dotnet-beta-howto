@@ -11,22 +11,22 @@ namespace Microsoft.Graph
     using System.Collections.Generic;
 
     /// <summary>
-    /// The interface IOfficeGraphInsightsTrendingCollectionRequestBuilder.
+    /// The interface IGraphServiceTrendingCollectionRequestBuilder.
     /// </summary>
-    public partial interface IOfficeGraphInsightsTrendingCollectionRequestBuilder
+    public partial interface IGraphServiceTrendingCollectionRequestBuilder
     {
         /// <summary>
         /// Builds the request.
         /// </summary>
         /// <returns>The built request.</returns>
-        IOfficeGraphInsightsTrendingCollectionRequest Request();
+        IGraphServiceTrendingCollectionRequest Request();
 
         /// <summary>
         /// Builds the request.
         /// </summary>
         /// <param name="options">The query and header options for the request.</param>
         /// <returns>The built request.</returns>
-        IOfficeGraphInsightsTrendingCollectionRequest Request(IEnumerable<Option> options);
+        IGraphServiceTrendingCollectionRequest Request(IEnumerable<Option> options);
 
         /// <summary>
         /// Gets an <see cref="ITrendingRequestBuilder"/> for the specified Trending.

@@ -41,13 +41,13 @@ namespace Microsoft.Graph
         }
     
         /// <summary>
-        /// Gets the GraphServiceOfficeGraphInsights request builder.
+        /// Gets the GraphServiceTrending request builder.
         /// </summary>
-        public IGraphServiceOfficeGraphInsightsCollectionRequestBuilder OfficeGraphInsights
+        public IGraphServiceTrendingCollectionRequestBuilder Trending
         {
             get
             {
-                return new GraphServiceOfficeGraphInsightsCollectionRequestBuilder(this.BaseUrl + "/officeGraphInsights", this);
+                return new GraphServiceTrendingCollectionRequestBuilder(this.BaseUrl + "/trending", this);
             }
         }
     
