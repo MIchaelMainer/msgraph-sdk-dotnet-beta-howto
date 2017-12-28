@@ -40,7 +40,7 @@ We use the https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator to gener
 3. Check that we are targeting C#. Open GraphODataTemplateWriter/.config/TemplateWriterSettings.json and check that the **TargetLanguage** is set to `CSharp`.
 4. Generate our beta models. We'll give it the path to our metadata file and the Generated directory in our msgraph-sdk-dotnet-beta repo. vipr.exe will be found in \MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug. Run the following from the command line or Visual Studio:
 
-        vipr.exe D:\repos\msgraph-sdk-dotnet-beta\metadataSkeleton.xml --writer="GraphODataTemplateWriter" --output=D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
+        vipr.exe D:\repos\msgraph-sdk-dotnet-beta\metadataTrending.xml --writer="GraphODataTemplateWriter" --output=D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
 
 At this point, we have our beta models. Let's go back to msgraph-sdk-dotnet-beta-models project in Visual Studio to see what has been generated.
 
