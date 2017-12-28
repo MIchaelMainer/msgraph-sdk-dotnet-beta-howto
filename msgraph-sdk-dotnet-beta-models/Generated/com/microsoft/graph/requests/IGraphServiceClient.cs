@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Requests\IEntityClient.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
 
     /// <summary>
@@ -16,9 +16,9 @@ namespace Microsoft.Graph.Beta.Models
     {
     
         /// <summary>
-        /// Gets the GraphServiceOfficeGraphInsights request builder.
+        /// Gets the GraphServiceTrending request builder.
         /// </summary>
-        IGraphServiceOfficeGraphInsightsCollectionRequestBuilder OfficeGraphInsights { get; }
+        IGraphServiceTrendingCollectionRequestBuilder Trending { get; }
     
     }
 }

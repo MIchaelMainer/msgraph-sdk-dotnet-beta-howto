@@ -6,24 +6,24 @@
 
 // Template Source: Templates\CSharp\Requests\EntityRequestBuilder.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
 
     /// <summary>
-    /// The type OfficeGraphInsightsRequestBuilder.
+    /// The type EntityRequestBuilder.
     /// </summary>
-    public partial class OfficeGraphInsightsRequestBuilder : EntityRequestBuilder, IOfficeGraphInsightsRequestBuilder
+    public partial class EntityRequestBuilder : BaseRequestBuilder, IEntityRequestBuilder
     {
 
         /// <summary>
-        /// Constructs a new OfficeGraphInsightsRequestBuilder.
+        /// Constructs a new EntityRequestBuilder.
         /// </summary>
         /// <param name="requestUrl">The URL for the built request.</param>
         /// <param name="client">The <see cref="IBaseClient"/> for handling requests.</param>
-        public OfficeGraphInsightsRequestBuilder(
+        public EntityRequestBuilder(
             string requestUrl,
             IBaseClient client)
             : base(requestUrl, client)
@@ -34,7 +34,7 @@ namespace Microsoft.Graph.Beta.Models
         /// Builds the request.
         /// </summary>
         /// <returns>The built request.</returns>
-        public new IOfficeGraphInsightsRequest Request()
+        public IEntityRequest Request()
         {
             return this.Request(null);
         }
@@ -44,21 +44,9 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="options">The query and header options for the request.</param>
         /// <returns>The built request.</returns>
-        public new IOfficeGraphInsightsRequest Request(IEnumerable<Option> options)
+        public IEntityRequest Request(IEnumerable<Option> options)
         {
-            return new OfficeGraphInsightsRequest(this.RequestUrl, this.Client, options);
-        }
-    
-        /// <summary>
-        /// Gets the request builder for Trending.
-        /// </summary>
-        /// <returns>The <see cref="IOfficeGraphInsightsTrendingCollectionRequestBuilder"/>.</returns>
-        public IOfficeGraphInsightsTrendingCollectionRequestBuilder Trending
-        {
-            get
-            {
-                return new OfficeGraphInsightsTrendingCollectionRequestBuilder(this.AppendSegmentToRequestUrl("trending"), this.Client);
-            }
+            return new EntityRequest(this.RequestUrl, this.Client, options);
         }
     
     }

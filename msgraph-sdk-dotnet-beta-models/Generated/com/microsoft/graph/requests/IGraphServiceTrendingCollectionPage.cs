@@ -6,22 +6,22 @@
 
 // Template Source: Templates\CSharp\Requests\IEntityCollectionPage.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
 
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The interface IOfficeGraphInsightsTrendingCollectionPage.
+    /// The interface IGraphServiceTrendingCollectionPage.
     /// </summary>
-    [JsonConverter(typeof(InterfaceConverter<OfficeGraphInsightsTrendingCollectionPage>))]
-    public interface IOfficeGraphInsightsTrendingCollectionPage : ICollectionPage<Trending>
+    [JsonConverter(typeof(InterfaceConverter<GraphServiceTrendingCollectionPage>))]
+    public interface IGraphServiceTrendingCollectionPage : ICollectionPage<Trending>
     {
         /// <summary>
-        /// Gets the next page <see cref="IOfficeGraphInsightsTrendingCollectionRequest"/> instance.
+        /// Gets the next page <see cref="IGraphServiceTrendingCollectionRequest"/> instance.
         /// </summary>
-        IOfficeGraphInsightsTrendingCollectionRequest NextPageRequest { get; }
+        IGraphServiceTrendingCollectionRequest NextPageRequest { get; }
 
         /// <summary>
         /// Initializes the NextPageRequest property.

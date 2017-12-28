@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Requests\IEntityRequestBuilder.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.Collections.Generic;

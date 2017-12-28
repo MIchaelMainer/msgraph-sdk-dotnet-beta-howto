@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Requests\IEntityRequest.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.IO;
@@ -15,91 +15,91 @@ namespace Microsoft.Graph.Beta.Models
     using System.Linq.Expressions;
 
     /// <summary>
-    /// The interface IEntityRequest.
+    /// The interface ITrendingRequest.
     /// </summary>
-    public partial interface IEntityRequest : IBaseRequest
+    public partial interface ITrendingRequest : IBaseRequest
     {
         /// <summary>
-        /// Creates the specified Entity using PUT.
+        /// Creates the specified Trending using PUT.
         /// </summary>
-        /// <param name="entityToCreate">The Entity to create.</param>
-        /// <returns>The created Entity.</returns>
-        System.Threading.Tasks.Task<Entity> CreateAsync(Entity entityToCreate);        /// <summary>
-        /// Creates the specified Entity using PUT.
+        /// <param name="trendingToCreate">The Trending to create.</param>
+        /// <returns>The created Trending.</returns>
+        System.Threading.Tasks.Task<Trending> CreateAsync(Trending trendingToCreate);        /// <summary>
+        /// Creates the specified Trending using PUT.
         /// </summary>
-        /// <param name="entityToCreate">The Entity to create.</param>
+        /// <param name="trendingToCreate">The Trending to create.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
-        /// <returns>The created Entity.</returns>
-        System.Threading.Tasks.Task<Entity> CreateAsync(Entity entityToCreate, CancellationToken cancellationToken);
+        /// <returns>The created Trending.</returns>
+        System.Threading.Tasks.Task<Trending> CreateAsync(Trending trendingToCreate, CancellationToken cancellationToken);
 
         /// <summary>
-        /// Deletes the specified Entity.
+        /// Deletes the specified Trending.
         /// </summary>
         /// <returns>The task to await.</returns>
         System.Threading.Tasks.Task DeleteAsync();
 
         /// <summary>
-        /// Deletes the specified Entity.
+        /// Deletes the specified Trending.
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
         /// <returns>The task to await.</returns>
         System.Threading.Tasks.Task DeleteAsync(CancellationToken cancellationToken);
 
         /// <summary>
-        /// Gets the specified Entity.
+        /// Gets the specified Trending.
         /// </summary>
-        /// <returns>The Entity.</returns>
-        System.Threading.Tasks.Task<Entity> GetAsync();
+        /// <returns>The Trending.</returns>
+        System.Threading.Tasks.Task<Trending> GetAsync();
 
         /// <summary>
-        /// Gets the specified Entity.
+        /// Gets the specified Trending.
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
-        /// <returns>The Entity.</returns>
-        System.Threading.Tasks.Task<Entity> GetAsync(CancellationToken cancellationToken);
+        /// <returns>The Trending.</returns>
+        System.Threading.Tasks.Task<Trending> GetAsync(CancellationToken cancellationToken);
 
         /// <summary>
-        /// Updates the specified Entity using PATCH.
+        /// Updates the specified Trending using PATCH.
         /// </summary>
-        /// <param name="entityToUpdate">The Entity to update.</param>
-        /// <returns>The updated Entity.</returns>
-        System.Threading.Tasks.Task<Entity> UpdateAsync(Entity entityToUpdate);
+        /// <param name="trendingToUpdate">The Trending to update.</param>
+        /// <returns>The updated Trending.</returns>
+        System.Threading.Tasks.Task<Trending> UpdateAsync(Trending trendingToUpdate);
 
         /// <summary>
-        /// Updates the specified Entity using PATCH.
+        /// Updates the specified Trending using PATCH.
         /// </summary>
-        /// <param name="entityToUpdate">The Entity to update.</param>
+        /// <param name="trendingToUpdate">The Trending to update.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
-        /// <returns>The updated Entity.</returns>
-        System.Threading.Tasks.Task<Entity> UpdateAsync(Entity entityToUpdate, CancellationToken cancellationToken);
+        /// <returns>The updated Trending.</returns>
+        System.Threading.Tasks.Task<Trending> UpdateAsync(Trending trendingToUpdate, CancellationToken cancellationToken);
 
         /// <summary>
         /// Adds the specified expand value to the request.
         /// </summary>
         /// <param name="value">The expand value.</param>
         /// <returns>The request object to send.</returns>
-        IEntityRequest Expand(string value);
+        ITrendingRequest Expand(string value);
 
         /// <summary>
         /// Adds the specified expand value to the request.
         /// </summary>
         /// <param name="expandExpression">The expression from which to calculate the expand value.</param>
         /// <returns>The request object to send.</returns>
-        IEntityRequest Expand(Expression<Func<Entity, object>> expandExpression);
+        ITrendingRequest Expand(Expression<Func<Trending, object>> expandExpression);
 
         /// <summary>
         /// Adds the specified select value to the request.
         /// </summary>
         /// <param name="value">The select value.</param>
         /// <returns>The request object to send.</returns>
-        IEntityRequest Select(string value);
+        ITrendingRequest Select(string value);
 
         /// <summary>
         /// Adds the specified select value to the request.
         /// </summary>
         /// <param name="selectExpression">The expression from which to calculate the select value.</param>
         /// <returns>The request object to send.</returns>
-        IEntityRequest Select(Expression<Func<Entity, object>> selectExpression);
+        ITrendingRequest Select(Expression<Func<Trending, object>> selectExpression);
 
     }
 }

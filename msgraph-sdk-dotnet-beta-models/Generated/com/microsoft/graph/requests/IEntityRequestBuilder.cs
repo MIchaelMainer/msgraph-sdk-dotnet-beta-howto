@@ -6,35 +6,29 @@
 
 // Template Source: Templates\CSharp\Requests\IEntityRequestBuilder.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.Collections.Generic;
     using System.IO;
 
     /// <summary>
-    /// The interface IOfficeGraphInsightsRequestBuilder.
+    /// The interface IEntityRequestBuilder.
     /// </summary>
-    public partial interface IOfficeGraphInsightsRequestBuilder : IEntityRequestBuilder
+    public partial interface IEntityRequestBuilder : IBaseRequestBuilder
     {
         /// <summary>
         /// Builds the request.
         /// </summary>
         /// <returns>The built request.</returns>
-        new IOfficeGraphInsightsRequest Request();
+        IEntityRequest Request();
 
         /// <summary>
         /// Builds the request.
         /// </summary>
         /// <param name="options">The query and header options for the request.</param>
         /// <returns>The built request.</returns>
-        new IOfficeGraphInsightsRequest Request(IEnumerable<Option> options);
-    
-        /// <summary>
-        /// Gets the request builder for Trending.
-        /// </summary>
-        /// <returns>The <see cref="IOfficeGraphInsightsTrendingCollectionRequestBuilder"/>.</returns>
-        IOfficeGraphInsightsTrendingCollectionRequestBuilder Trending { get; }
+        IEntityRequest Request(IEnumerable<Option> options);
     
     }
 }

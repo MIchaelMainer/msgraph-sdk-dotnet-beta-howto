@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Model\EntityType.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.Collections.Generic;

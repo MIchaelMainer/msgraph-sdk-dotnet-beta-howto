@@ -2,7 +2,7 @@
 <edmx:Edmx Version="4.0" 
     xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
     <edmx:DataServices>
-        <Schema Namespace="microsoft.graph.beta.models" 
+        <Schema Namespace="microsoft.graph" 
             xmlns="http://docs.oasis-open.org/odata/ns/edm">
             <EntityType Name="entity" Abstract="true">
                 <Key>
@@ -10,14 +10,14 @@
                 </Key>
                 <Property Name="id" Type="Edm.String" Nullable="false" Unicode="false" />
             </EntityType>
-            <EntityType Name="officeGraphInsights" BaseType="microsoft.graph.beta.models.entity">
-                <NavigationProperty Name="trending" Type="Collection(microsoft.graph.beta.models.trending)" ContainsTarget="true" />
-            </EntityType>
-            <EntityType Name="trending" BaseType="microsoft.graph.beta.models.entity">
+            <!-- We removed the navigation properties since I wasn't interested in those models and sussing out which
+                 other schema items I needed to support those. -->
+            <EntityType Name="trending" BaseType="microsoft.graph.entity">
                 <Property Name="weight" Type="Edm.Double" Nullable="false" />
-                <Property Name="resourceVisualization" Type="microsoft.graph.beta.models.resourceVisualization" />
-                <Property Name="resourceReference" Type="microsoft.graph.beta.models.resourceReference" />
+                <Property Name="resourceVisualization" Type="microsoft.graph.resourceVisualization" />
+                <Property Name="resourceReference" Type="microsoft.graph.resourceReference" />
                 <Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" />
+                <!-- <NavigationProperty Name="resource" Type="microsoft.graph.entity" /> -->
             </EntityType>
             <ComplexType Name="resourceVisualization">
                 <Property Name="title" Type="Edm.String" Unicode="false" />
@@ -34,8 +34,11 @@
                 <Property Name="id" Type="Edm.String" Unicode="false" />
                 <Property Name="type" Type="Edm.String" Unicode="false" />
             </ComplexType>
+            <!-- The generation tool needs this top level entity set to access the models. We could 
+                 alter the user entityset and entity if we wanted to generate request builders to
+                 access the trending information. -->
             <EntityContainer Name="GraphService">
-                <EntitySet Name="officeGraphInsights" EntityType="microsoft.graph.beta.models.officeGraphInsights" />
+                <EntitySet Name="trending" EntityType="microsoft.graph.trending" />
             </EntityContainer>
         </Schema>
     </edmx:DataServices>

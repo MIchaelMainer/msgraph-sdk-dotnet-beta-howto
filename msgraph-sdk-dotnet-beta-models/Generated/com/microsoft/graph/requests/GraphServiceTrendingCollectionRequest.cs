@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Requests\EntityCollectionRequest.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
     using System;
     using System.Collections.Generic;
@@ -15,17 +15,17 @@ namespace Microsoft.Graph.Beta.Models
     using System.Linq.Expressions;
 
     /// <summary>
-    /// The type GraphServiceOfficeGraphInsightsCollectionRequest.
+    /// The type GraphServiceTrendingCollectionRequest.
     /// </summary>
-    public partial class GraphServiceOfficeGraphInsightsCollectionRequest : BaseRequest, IGraphServiceOfficeGraphInsightsCollectionRequest
+    public partial class GraphServiceTrendingCollectionRequest : BaseRequest, IGraphServiceTrendingCollectionRequest
     {
         /// <summary>
-        /// Constructs a new GraphServiceOfficeGraphInsightsCollectionRequest.
+        /// Constructs a new GraphServiceTrendingCollectionRequest.
         /// </summary>
         /// <param name="requestUrl">The URL for the built request.</param>
         /// <param name="client">The <see cref="IBaseClient"/> for handling requests.</param>
         /// <param name="options">Query and header option name value pairs for the request.</param>
-        public GraphServiceOfficeGraphInsightsCollectionRequest(
+        public GraphServiceTrendingCollectionRequest(
             string requestUrl,
             IBaseClient client,
             IEnumerable<Option> options)
@@ -34,33 +34,33 @@ namespace Microsoft.Graph.Beta.Models
         }
         
         /// <summary>
-        /// Adds the specified OfficeGraphInsights to the collection via POST.
+        /// Adds the specified Trending to the collection via POST.
         /// </summary>
-        /// <param name="officeGraphInsights">The OfficeGraphInsights to add.</param>
-        /// <returns>The created OfficeGraphInsights.</returns>
-        public System.Threading.Tasks.Task<OfficeGraphInsights> AddAsync(OfficeGraphInsights officeGraphInsights)
+        /// <param name="trending">The Trending to add.</param>
+        /// <returns>The created Trending.</returns>
+        public System.Threading.Tasks.Task<Trending> AddAsync(Trending trending)
         {
-            return this.AddAsync(officeGraphInsights, CancellationToken.None);
+            return this.AddAsync(trending, CancellationToken.None);
         }
 
         /// <summary>
-        /// Adds the specified OfficeGraphInsights to the collection via POST.
+        /// Adds the specified Trending to the collection via POST.
         /// </summary>
-        /// <param name="officeGraphInsights">The OfficeGraphInsights to add.</param>
+        /// <param name="trending">The Trending to add.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
-        /// <returns>The created OfficeGraphInsights.</returns>
-        public System.Threading.Tasks.Task<OfficeGraphInsights> AddAsync(OfficeGraphInsights officeGraphInsights, CancellationToken cancellationToken)
+        /// <returns>The created Trending.</returns>
+        public System.Threading.Tasks.Task<Trending> AddAsync(Trending trending, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
             this.Method = "POST";
-            return this.SendAsync<OfficeGraphInsights>(officeGraphInsights, cancellationToken);
+            return this.SendAsync<Trending>(trending, cancellationToken);
         }
 
         /// <summary>
         /// Gets the collection page.
         /// </summary>
         /// <returns>The collection page.</returns>
-        public System.Threading.Tasks.Task<IGraphServiceOfficeGraphInsightsCollectionPage> GetAsync()
+        public System.Threading.Tasks.Task<IGraphServiceTrendingCollectionPage> GetAsync()
         {
             return this.GetAsync(CancellationToken.None);
         }
@@ -70,10 +70,10 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> for the request.</param>
         /// <returns>The collection page.</returns>
-        public async System.Threading.Tasks.Task<IGraphServiceOfficeGraphInsightsCollectionPage> GetAsync(CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<IGraphServiceTrendingCollectionPage> GetAsync(CancellationToken cancellationToken)
         {
             this.Method = "GET";
-            var response = await this.SendAsync<GraphServiceOfficeGraphInsightsCollectionResponse>(null, cancellationToken).ConfigureAwait(false);
+            var response = await this.SendAsync<GraphServiceTrendingCollectionResponse>(null, cancellationToken).ConfigureAwait(false);
             if (response != null && response.Value != null && response.Value.CurrentPage != null)
             {
                 if (response.AdditionalData != null)
@@ -105,7 +105,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The expand value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Expand(string value)
+        public IGraphServiceTrendingCollectionRequest Expand(string value)
         {
             this.QueryOptions.Add(new QueryOption("$expand", value));
             return this;
@@ -116,7 +116,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="expandExpression">The expression from which to calculate the expand value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Expand(Expression<Func<OfficeGraphInsights, object>> expandExpression)
+        public IGraphServiceTrendingCollectionRequest Expand(Expression<Func<Trending, object>> expandExpression)
         {
             if (expandExpression == null)
             {
@@ -140,7 +140,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The select value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Select(string value)
+        public IGraphServiceTrendingCollectionRequest Select(string value)
         {
             this.QueryOptions.Add(new QueryOption("$select", value));
             return this;
@@ -151,7 +151,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="selectExpression">The expression from which to calculate the select value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Select(Expression<Func<OfficeGraphInsights, object>> selectExpression)
+        public IGraphServiceTrendingCollectionRequest Select(Expression<Func<Trending, object>> selectExpression)
         {
             if (selectExpression == null)
             {
@@ -175,7 +175,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The top value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Top(int value)
+        public IGraphServiceTrendingCollectionRequest Top(int value)
         {
             this.QueryOptions.Add(new QueryOption("$top", value.ToString()));
             return this;
@@ -186,7 +186,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The filter value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Filter(string value)
+        public IGraphServiceTrendingCollectionRequest Filter(string value)
         {
             this.QueryOptions.Add(new QueryOption("$filter", value));
             return this;
@@ -197,7 +197,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The skip value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest Skip(int value)
+        public IGraphServiceTrendingCollectionRequest Skip(int value)
         {
             this.QueryOptions.Add(new QueryOption("$skip", value.ToString()));
             return this;
@@ -208,7 +208,7 @@ namespace Microsoft.Graph.Beta.Models
         /// </summary>
         /// <param name="value">The orderby value.</param>
         /// <returns>The request object to send.</returns>
-        public IGraphServiceOfficeGraphInsightsCollectionRequest OrderBy(string value)
+        public IGraphServiceTrendingCollectionRequest OrderBy(string value)
         {
             this.QueryOptions.Add(new QueryOption("$orderby", value));
             return this;

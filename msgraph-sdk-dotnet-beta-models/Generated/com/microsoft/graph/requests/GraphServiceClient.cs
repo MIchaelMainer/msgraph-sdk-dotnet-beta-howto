@@ -6,7 +6,7 @@
 
 // Template Source: Templates\CSharp\Requests\EntityClient.cs.tt
 
-namespace Microsoft.Graph.Beta.Models
+namespace Microsoft.Graph
 {
 
     /// <summary>
@@ -41,13 +41,13 @@ namespace Microsoft.Graph.Beta.Models
         }
     
         /// <summary>
-        /// Gets the GraphServiceOfficeGraphInsights request builder.
+        /// Gets the GraphServiceTrending request builder.
         /// </summary>
-        public IGraphServiceOfficeGraphInsightsCollectionRequestBuilder OfficeGraphInsights
+        public IGraphServiceTrendingCollectionRequestBuilder Trending
         {
             get
             {
-                return new GraphServiceOfficeGraphInsightsCollectionRequestBuilder(this.BaseUrl + "/officeGraphInsights", this);
+                return new GraphServiceTrendingCollectionRequestBuilder(this.BaseUrl + "/trending", this);
             }
         }
     
