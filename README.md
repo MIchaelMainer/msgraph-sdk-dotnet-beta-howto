@@ -34,7 +34,7 @@ We use the https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator to gener
 
 1. Recursively clone the repo: 
 
-        git clone --recursive git@github.com:MicrosoftGraph/MSGraph-SDK-Code-Generator.git
+        git clone --recursive https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator.git
 
 2. Build it: 
     
