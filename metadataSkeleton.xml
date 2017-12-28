@@ -4,12 +4,21 @@
     <edmx:DataServices>
         <Schema Namespace="microsoft.graph" 
             xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <!-- TODO: Add the entities that you want in your models. Make sure you do the following:
+                 1. Remove any navigation properties since we won't be forming relationships between entities.
+                 2. Make sure you include all structural properties referenced by your target entities.
+            -->
             <EntityType Name="entity" Abstract="true">
                 <Key>
                     <PropertyRef Name="id" />
                 </Key>
                 <Property Name="id" Type="Edm.String" Nullable="false" Unicode="false" />
             </EntityType>
+            <!-- The generation tool needs this top level entity set to access the models. 
+                 TODO: Change the entity set to target the entity that you want in your generated models. -->
+            <EntityContainer Name="GraphService">
+                <EntitySet Name="trending" EntityType="microsoft.graph.trending" />
+            </EntityContainer>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>
