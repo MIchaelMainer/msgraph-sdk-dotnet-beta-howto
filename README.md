@@ -1,6 +1,6 @@
 # msgraph-sdk-dotnet-beta
 
-This repo contains an example class library solution and workflow for generating beta Microsoft Graph models and using them in a solution that already uses the Microsoft Graph client library. This workflow will show you how to generate a beta metadata file for the Trending API, C# model code files for the Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
+This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to generate a beta metadata file for the beta Trending API, C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
 
 ## About the msgraph-sdk-dotnet-beta.sln
 
@@ -16,15 +16,15 @@ This solution contains two metadata files:
 
 ## Create our custom beta metadata with the target Trending API models
 
-These steps can be done 
+We used the [Trending API documentation](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending) to discover what the [Trending resource](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/insights_trending) looks like and then found that resource (aka entity) in the [beta metadata](https://graph.microsoft.com/beta/$metadata). From the beta metadata, we discovered which complex types we needed to include in our Trending API metadata and added those. 
 
 1. Clone this repo and open it in Visual Studio.
 2. Open metadataSkeleton.xml and review the instructions in the XML comments. You'll need to fill out this skeleton with the models you want to use in your application.
 3. Open metadataTrending.xml and review what we changed to make it work for the Trending API. 
 
-At this point, we have a metadata file that contains the Trending API entity. We used the [Trending API documentation](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending) to discover what the [Trending resource](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/insights_trending) looks like and then found that resource (aka entity) in the [beta metadata](https://graph.microsoft.com/beta/$metadata). From the metadata, we discovered which complex types we needed to include in our Trending API metadata and added those.
+At this point, we have a metadata file that contains the Trending API entity. 
 
-<!-- TODO: I think this section need more explanation. -->
+<!-- TODO: I think this section needs more explanation. Depending on how many models someone wants to generate, and how complex the models are, this could be very confusing.  -->
 
 Now we are ready to generate the Trending API models.
 
@@ -53,7 +53,7 @@ At this point, we have our beta models. Let's go back to msgraph-sdk-dotnet-beta
 
 ## Build our beta Trending API model class library
 
-Our msgraph-sdk-dotnet-beta solution now has the generated models included in it. We are only concerned with the models. We will ignore the generated request builders since we won't be using them.
+Our msgraph-sdk-dotnet-beta solution now has the generated models included in it if you set the output path correctly when you used the code generator. We are only concerned with the models. We will ignore the generated request builders since we won't be using them.
 
 Now build this solution to create the Trending API model class library.
 
@@ -65,9 +65,9 @@ Now that we have Trending API models, we can add them to an existing Microsoft G
 2. Get a clientId and add it to the [Constants.cs](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Constants.cs#L14) file. See the ReadMe in the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) for instructions on how to do this.
 3. Add the Sites.Read.All and/or Sites.ReadWrite.All scopes to the Scopes variable in AuthenticationHelper.cs. This should be on or near [line 22](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/AuthenticationHelper.cs#L22). 
 4. Add a reference to the beta model class library we created. This was Microsoft.Graph.Beta.Models.dll.
-5. Give Microsoft.Graph.Beta.Models.dll an alias called `GraphBetaModels` so that we can reference the objects in that dll. You can do this in the Microsoft.Graph.Beta.Models reference property menu or directly in the csproj file. We do this since the Microsoft.Graph client library and our beta model class library are in the same namespace. We'll use this to add our extern alias directive.
+5. Give Microsoft.Graph.Beta.Models.dll an alias called `GraphBetaModels` so that we can reference the objects in that dll. You can do this in the Microsoft.Graph.Beta.Models reference property menu or directly in the csproj file reference within an `<Aliases/>` element. We do this since the Microsoft.Graph client library and our beta model class library are in the same namespace. We'll use this to add our extern alias directive.
 6. Add `extern alias GraphBetaModels;` to the top of Program.cs above all other directives. Now we can reference the objects in our model class library.
-7. Starting at [line 40](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Program.cs#L40) in Program.cs, add the following code (you can also get this code in a Visual Studio snippet included with the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) repo:
+7. Starting at [line 40](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Program.cs#L40) in Program.cs, add the following code (you can also get this code in a Visual Studio snippet file included with the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) repo:
 
 ```csharp
 // 1. Create request message with the URL for the trending API.
