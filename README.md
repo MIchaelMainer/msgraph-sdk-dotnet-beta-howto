@@ -53,7 +53,7 @@ Now let's take a look at this solution.
 2. Open this solution and look over the contents of the metadataSkeleton.xml and metadataTrending.xml files. You'll want to alter one of these for the beta models that you'll use in your application. 
 3. Run our generation tool, vipr.exe, to create our beta models:
 
-        vipr.exe D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\metadataTrending.xml --writer="GraphODataTemplateWriter" --output=D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
+        vipr.exe C:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\metadataTrending.xml --writer="GraphODataTemplateWriter" --output=C:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
 
 You can find vipr.exe in a path like: C:\repos\MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug\Vipr.exe. The first argument is the input metadata. The second argument named **writer** is always the same: GraphODataTemplateWriter. The third argument named **output** is the output location for the generated files. We are using the location in msgraph-sdk-dotnet-beta in this example. We suggest that you do the same.
 
