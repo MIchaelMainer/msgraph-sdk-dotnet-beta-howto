@@ -59,7 +59,7 @@ You can find vipr.exe in a path like: C:\repos\MSGraph-SDK-Code-Generator\src\Gr
 
 Alternately, you can run this from Visual Studio. The following image shows how to set this up.
 
-![](./msgraph-sdk-dotnet-beta-models/images/codeGeneratorSettings.png)
+![](/msgraph-sdk-dotnet-beta-models/images/codeGeneratorSettings.png)
 
 At this point, you should now see models and requests in the *Generated* folder. Delete the requests folder as we won't be using the request builder classes. Delete entity.cs in the models folder as the Microsoft Graph client library already contains this file.
 
