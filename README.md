@@ -57,7 +57,7 @@ Now let's take a look at this solution.
 
 You can find vipr.exe in a path like: C:\repos\MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug\Vipr.exe. The first argument is the input metadata. The second argument named **writer** is always the same: GraphODataTemplateWriter. The third argument named **output** is the output location for the generated files. We are using the location in msgraph-sdk-dotnet-beta in this example. We suggest that you do the same.
 
-Alternately, you can run this from Visual Studio. The following image shows how to set this up.
+Alternately, you can run this from Visual Studio in the MSGraph-SDK-Code-Generator solution. The following image shows how to set this up.
 
 ![](/msgraph-sdk-dotnet-beta-models/images/codeGeneratorSettings.PNG)
 
