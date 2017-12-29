@@ -1,34 +1,23 @@
 # msgraph-sdk-dotnet-beta
 
-This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to generate a beta metadata file for the beta Trending API, C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
+This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to create a beta metadata file for the beta Trending API, generate C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
 
-## About the msgraph-sdk-dotnet-beta.sln
+## About the Trending API
 
-This solution is setup with existing references to the Microsoft Graph client library and JSON.Net. The reason why we need this is because the generated client library models contain references to classes in these libraries. This solution has been targeted at both .Net 4.5 and .NetStandard 1.1.
+For our example, we are using the Trending API. The Trending API provides insights about which documents in OneDrive and SharePoint are trending around a user. While I don't know the secret sauce for what defines the trend around documents, I'd wager it has, in part, something to do with how often documents are accessed. Let's take a look at the Trending API by using the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).  
 
-This solution contains the following branches:
-* master - contains the initial state of this solution. This way you can use this solution as a starting point to add your own beta classes.
-* final - contains the final state of the Trending beta class library. Use this branch to compare the results of you following the steps in this readme to the results we get after we walked through these steps.
+<!-- TODO: Add image for Graph Explorer and the Trending API; Add 2 slides to deck (include link to this repo); Update Windows as Edge is giving me issues. -->
 
-This solution contains two metadata files:
-* metadataTrending.xml - contains the metadata used for generating the Trending API models.
-* metadataSkeleton.xml - contains a basic skeleton of what you need to generate a beta class library.
+## Why use the beta Microsoft Graph APIs
 
-## Create our custom beta metadata with the target Trending API models
+We've had some requests for a beta client library for Microsoft Graph. We don't have plans to produce a beta client library. At the same time, we understand that you may want to include beta features. If you haven't considered beta features in your application, here are some reasons why you might want to include beta features in your existing Microsoft Graph client:
+* Curiosity - you just want to see what the beta feature does and how it works.
+* Create experimental features in your application.
+* Get a head start on implementing 'soon to be released' features.
 
-We used the [Trending API documentation](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending) to discover what the [Trending resource](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/insights_trending) looks like and then found that resource (aka entity) in the [beta metadata](https://graph.microsoft.com/beta/$metadata). From the beta metadata, we discovered which complex types we needed to include in our Trending API metadata and added those. 
+<!-- TODO: Add this information to a slide. -->
 
-1. Clone this repo and open it in Visual Studio.
-2. Open metadataSkeleton.xml and review the instructions in the XML comments. You'll need to fill out this skeleton with the models you want to use in your application.
-3. Open metadataTrending.xml and review what we changed to make it work for the Trending API. 
-
-At this point, we have a metadata file that contains the Trending API entity. 
-
-<!-- TODO: I think this section needs more explanation. Depending on how many models someone wants to generate, and how complex the models are, this could be very confusing.  -->
-
-Now we are ready to generate the Trending API models.
-
-## Generate the Trending API beta models
+## Step 1. Build the SDK generation tool
 
 We use the https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator to generate our code files. It has a submodule called VIPR that loads the metadata into memory and parses out the relationships between metadata objects into an object model that is understood by the code generator and its templates.
 
@@ -36,31 +25,58 @@ We use the https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator to gener
 
         git clone --recursive https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator.git
 
-2. Build the solution.
-3. Check that we are targeting C#. Open GraphODataTemplateWriter/.config/TemplateWriterSettings.json and check that the **TargetLanguage** is set to `CSharp`.
-4. Generate our beta models. We'll give it the path to our metadata file and the Generated directory in our msgraph-sdk-dotnet-beta repo. vipr.exe will be found in \MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug. Run the following from the command line or Visual Studio:
+2. Build the solution (F6). Make sure that the Nuget packages are restored.
+3. Check that we are targeting C#. Open GraphODataTemplateWriter/.config/TemplateWriterSettings.json and check that the **TargetLanguage** is set to `CSharp`. Note that this tool is used to target other platforms in addition to .Net so the last checkin might have changed the target language.
+
+At this point, our code generator is setup and ready to create our beta Trending API models. 
+
+<!-- TODO: Add a slide that describes what this tool is and why we use it. Add a demo slide, we'll take questions after the demo. -->
+
+## Step 2. Generate and build the beta model class library
+
+This solution is setup with existing references to the Microsoft Graph client library and JSON.Net. The reason why we need this is because the generated class library models contain references to classes in these libraries. This solution has been targeted at both .Net 4.5 and .NetStandard 1.1.
+
+This solution contains the following branches:
+* master - contains the initial state of this solution. This way you can use this solution as a starting point to add your own beta classes.
+* final - contains the final state of the Trending beta class library. Use this branch to compare the results of you following the steps in this readme to the results we get after we walked through these steps.
+
+This solution contains two metadata files:
+* metadataTrending.xml - contains the metadata used for generating the Trending API models.
+* metadataSkeleton.xml - contains a basic skeleton and instructions for what you need to generate a beta class library.
+
+Now let's take a look at this solution.
+
+1. Clone this repo:
+
+        git clone https://github.com/MIchaelMainer/msgraph-sdk-dotnet-beta.git
+
+2. Open this solution and look over the contents of the metadataSkeleton.xml and metadataTrending.xml files. You'll want to alter one of these for the beta models that you'll use in your application. 
+3. Run our generation tool, vipr.exe, to create our beta models:
 
         vipr.exe D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\metadataTrending.xml --writer="GraphODataTemplateWriter" --output=D:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
 
-At this point, we have our beta models. Let's go back to msgraph-sdk-dotnet-beta-models project in Visual Studio to see what has been generated.
+You can find vipr.exe in a path like: C:\repos\MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug\Vipr.exe. The first argument is the input metadata. The second argument named **writer** is always the same: GraphODataTemplateWriter. The third argument named **output** is the output location for the generated files. We are using the location in msgraph-sdk-dotnet-beta in this example. We suggest that you do the same.
 
-## Build our beta Trending API model class library
+At this point, you should now see models and requests in the *Generated* folder. Delete the requests folder as we won't be using the request builder classes. Delete entity.cs in the models folder as the Microsoft Graph client library already contains this file.
 
-Our msgraph-sdk-dotnet-beta solution now has the generated models included in it if you set the output path correctly when you used the code generator. We are only concerned with the models. We will ignore the generated request builders since we won't be using them.
+4. Check that we are building this class library with the same referenced version of the Microsoft Graph client library used in our target application. Otherwise we'd have to use a binding redirect. 
+5. Build this solution (F6).
 
-Now build this solution to create the Trending API model class library.
+Now we have generated the class library code files and built the class library. We are now ready to add this library to our existing solution.
 
-## How to update the console-csharp-connect-sample to use the Trending API beta models
+<!-- TODO: Add a slide that describes what we will do in this step: clone this repo, what is the graph metadata, our metadata in this repo. Add a demo slide, we'll take questions after the demo. -->
+
+## Step 3. Integrate beta model class library into the console-csharp-connect-sample
 
 Now that we have Trending API models, we can add them to an existing Microsoft Graph client library solution. 
 
-1. Clone the forked [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) sample. The **master** branch will be our starting point. If you want to jump ahead or compare, the **final** branch contains the final state of this solution. Here's a [pull request for comparing](https://github.com/MIchaelMainer/console-csharp-connect-sample/pull/3/files) what is in the **final** branch versus **master**.
-2. Get a clientId and add it to the [Constants.cs](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Constants.cs#L14) file. See the ReadMe in the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) for instructions on how to do this.
+1. Clone the forked [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) sample. The **master** branch will be our starting point. If you want to jump ahead or compare, the **final** branch contains the final state of this solution.
+2. Get a clientId (aka appId) and add it to the [Constants.cs](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Constants.cs#L14) file. See the ReadMe in the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) for instructions on how to do this. Make sure that you select your application registration as a native app.
 3. Add the Sites.Read.All and/or Sites.ReadWrite.All scopes to the Scopes variable in AuthenticationHelper.cs. This should be on or near [line 22](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/AuthenticationHelper.cs#L22). 
 4. Add a reference to the beta model class library we created. This was Microsoft.Graph.Beta.Models.dll.
-5. Give Microsoft.Graph.Beta.Models.dll an alias called `GraphBetaModels` so that we can reference the objects in that dll. You can do this in the Microsoft.Graph.Beta.Models reference property menu or directly in the csproj file reference within an `<Aliases/>` element. We do this since the Microsoft.Graph client library and our beta model class library are in the same namespace. We'll use this to add our extern alias directive.
+5. Give Microsoft.Graph.Beta.Models.dll an alias called `GraphBetaModels` so that we can reference the objects in that library. You can do this in the Microsoft.Graph.Beta.Models reference property menu or directly in the csproj file reference within an `<Aliases/>` element. You'll replace the value `global` with `GraphBetaModels`. We do this since the Microsoft.Graph client library and our beta model class library are in the same namespace. We'll use this to add our extern alias directive.
 6. Add `extern alias GraphBetaModels;` to the top of Program.cs above all other directives. Now we can reference the objects in our model class library.
-7. Starting at [line 40](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Program.cs#L40) in Program.cs, add the following code (you can also get this code in a Visual Studio snippet file included with the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) repo:
+7. Starting at [line 40](https://github.com/MIchaelMainer/console-csharp-connect-sample/blob/master/console-csharp-connect-sample/Program.cs#L40) in Program.cs, add the following code (you can also get this code in a Visual Studio snippet file included with the [console-csharp-connect-sample](https://github.com/MIchaelMainer/console-csharp-connect-sample) repo):
 
 ```csharp
 // 1. Create request message with the URL for the trending API.
@@ -104,6 +120,8 @@ foreach (GraphBetaModels.Microsoft.Graph.Trending trendingItem in trendingList)
 }
 ```
 8. Press F5 and run the updated application to get the beta Trending information.
+
+<!-- TODO: Add a slide that describes what we will do in this step:  Add a demo slide, we'll take questions after the demo. -->
 
 ## Summary
 
