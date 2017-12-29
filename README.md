@@ -6,7 +6,7 @@ This repo contains an example class library solution and workflow for generating
 
 For our example, we are using the Trending API. The Trending API provides insights about which documents in OneDrive and SharePoint are trending around a user. While I don't know the secret sauce for what defines the trend around documents, I'd wager it has, in part, something to do with how often documents are accessed. Let's take a look at the Trending API by using the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).  
 
-<!-- TODO: Add image for Graph Explorer and the Trending API; Add 2 slides to deck (include link to this repo); Update Windows as Edge is giving me issues. -->
+<!-- TODO: Add 2 slides to deck (include link to this repo); Update Windows as Edge is giving me issues. -->
 
 ## Why use the beta Microsoft Graph APIs
 
@@ -56,6 +56,10 @@ Now let's take a look at this solution.
         vipr.exe C:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\metadataTrending.xml --writer="GraphODataTemplateWriter" --output=C:\repos\msgraph-sdk-dotnet-beta\msgraph-sdk-dotnet-beta-models\Generated
 
 You can find vipr.exe in a path like: C:\repos\MSGraph-SDK-Code-Generator\src\GraphODataTemplateWriter\bin\Debug\Vipr.exe. The first argument is the input metadata. The second argument named **writer** is always the same: GraphODataTemplateWriter. The third argument named **output** is the output location for the generated files. We are using the location in msgraph-sdk-dotnet-beta in this example. We suggest that you do the same.
+
+Alternately, you can run this from Visual Studio. The following image shows how to set this up.
+
+![](./msgraph-sdk-dotnet-beta-models/images/codeGeneratorSettings.png)
 
 At this point, you should now see models and requests in the *Generated* folder. Delete the requests folder as we won't be using the request builder classes. Delete entity.cs in the models folder as the Microsoft Graph client library already contains this file.
 
