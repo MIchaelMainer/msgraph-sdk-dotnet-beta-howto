@@ -1,10 +1,10 @@
-# msgraph-sdk-dotnet-beta
+# Microsoft Graph beta models for .NET 
 
-This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to create a beta metadata file for the beta Trending API, generate C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
+This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to create a beta metadata file for the beta [Trending API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending), generate C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
 
 ## About the Trending API
 
-For our example, we are using the Trending API. The Trending API provides insights about which documents in OneDrive and SharePoint are trending around a user. While I don't know the secret sauce for what defines the trend around documents, I'd wager it has, in part, something to do with how often documents are accessed. Let's take a look at the Trending API by using the [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).  
+For our example, we are using the [Trending API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending). The Trending API provides insights about which documents in OneDrive and SharePoint are trending around a user. A variety of public signals determine the relevance `weight` for a given resource. Take a look at the Trending API in [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).  
 
 <!-- TODO: Add 2 slides to deck (include link to this repo); Update Windows as Edge is giving me issues. -->
 
@@ -17,7 +17,7 @@ We've had some requests for a beta client library for Microsoft Graph. We don't 
 
 <!-- TODO: Add this information to a slide. -->
 
-## Step 1. Build the SDK generation tool
+## Phase 1. Build the SDK generation tool
 
 We use the https://github.com/microsoftgraph/MSGraph-SDK-Code-Generator to generate our code files. It has a submodule called VIPR that loads the metadata into memory and parses out the relationships between metadata objects into an object model that is understood by the code generator and its templates.
 
@@ -32,9 +32,9 @@ At this point, our code generator is setup and ready to create our beta Trending
 
 <!-- TODO: Add a slide that describes what this tool is and why we use it. Add a demo slide, we'll take questions after the demo. -->
 
-## Step 2. Generate and build the beta model class library
+## Phase 2. Generate and build the beta model class library
 
-This solution is setup with existing references to the Microsoft Graph client library and JSON.Net. The reason why we need this is because the generated class library models contain references to classes in these libraries. This solution has been targeted at both .Net 4.5 and .NetStandard 1.1.
+This solution is setup with existing references to the Microsoft Graph client library and [Json.NET](https://www.newtonsoft.com/json). The reason why we need this is because the generated class library models contain references to classes in these libraries. This solution has been targeted at both .Net 4.5 and .NetStandard 1.1.
 
 This solution contains the following branches:
 * master - contains the initial state of this solution. This way you can use this solution as a starting point to add your own beta classes.
@@ -70,7 +70,7 @@ Now we have generated the class library code files and built the class library. 
 
 <!-- TODO: Add a slide that describes what we will do in this step: clone this repo, what is the graph metadata, our metadata in this repo. Add a demo slide, we'll take questions after the demo. -->
 
-## Step 3. Integrate beta model class library into the console-csharp-connect-sample
+## Phase 3. Integrate beta model class library into the console-csharp-connect-sample
 
 Now that we have Trending API models, we can add them to an existing Microsoft Graph client library solution. 
 
@@ -129,11 +129,13 @@ foreach (GraphBetaModels.Microsoft.Graph.Trending trendingItem in trendingList)
 
 ## Summary
 
-The Microsoft Graph is changing often so we don't provide a beta client library. Still, people want to use the beta functionality in their application. This workflow shows how you integrate that beta functionality into your existing v1.0 Graph client. The main benefits of this are that you get to:
-* use beta objects in your existing application.
-* use your existing authenticated Graph client.
-* use the existing serializer to serialize/deserialize Microsoft Graph objects.
+The Microsoft Graph beta API is rapidly changing so we currently don't provide a beta client library. Still, you may want to use beta functionality in your application. This workflow shows how to integrate that beta functionality into your existing v1.0 Graph client.
 
-I see the following opportunities to further this:
-* script this workflow so that metadata can be autogenerated based on target entities.
-* update this workflow so that we can get the *CollectionPage objects generated so that we no longer have to do work with the JSON to get a collection of objects.
+By integrating beta functionality, you can:
+* Use beta objects in your existing application
+* Use your existing authenticated Graph client
+* Use the existing serializer to serialize/deserialize Microsoft Graph objects
+
+Possible improvements:
+* Script this workflow so that metadata can be autogenerated based on target entities
+* Update this workflow so that we can get the CollectionPage objects generated (so that we no longer have to do work with the JSON to get a collection of objects)
