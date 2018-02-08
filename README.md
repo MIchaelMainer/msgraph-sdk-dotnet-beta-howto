@@ -2,6 +2,8 @@
 
 This repo contains an example class library solution and workflow for generating beta Microsoft Graph models. It shows how to use the beta models in a solution that already uses the Microsoft Graph client library. This workflow will show you how to create a beta metadata file for the beta [Trending API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending), generate C# model code files for the beta Trending API, and then show how you can integrate the beta Trending API objects in an existing .Net Microsoft Graph solution.
 
+The [January 2018 Microsoft Graph Community Call has a video walkthrough](https://www.youtube.com/watch?v=WF9FY6aJRwQ) of the content in this repo. The content starts at about the 13:30 mark in the video.
+
 ## About the Trending API
 
 For our example, we are using the [Trending API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/insights_list_trending). The Trending API provides insights about which documents in OneDrive and SharePoint are trending around a user. A variety of public signals determine the relevance `weight` for a given resource. Take a look at the Trending API in [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).  
